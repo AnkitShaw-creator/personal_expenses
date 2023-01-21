@@ -1,10 +1,12 @@
 /*------Dashboard------*/
 
+
 * {
     margin: 0;
     padding: 0;
     list-style: none;
     text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .sidenav {
@@ -93,8 +95,65 @@ label #cross {
 .content{
     transition: all .5s ease;
     padding:25px;
+    background-color: rgb(228, 248, 195);
+    
 }
 .content header{
     padding-left: 50px;
     font-size: 30px;
+    font-family:'Source Code Pro', monospace;
+}
+
+.content button{
+    background-color: rgb(125, 183, 231);
+    color: #110700;
+    font-family: 'Source Code Pro', monospace;
+    padding: 10px;
+    transition: all .5s ease;
+    border-radius: 12px;
+    
+}
+.content button:hover{
+    background-color: rgb(4, 169, 48);
+    color: #110700;
+    box-shadow: 5px 10px;
+}
+
+.earnings{
+    padding: 10px;
+    margin: 5px;
+    border: 5px solid black;
+    border-radius: 12px;
+    transition: all .5s ease;
+}
+.earnings:hover{
+    background-color: #C40EB1;
+    border: 5px solid rgb(14, 196, 32);
+    box-shadow: 5px 10px;
+}
+
+.detailed_expenses{
+    padding: 10px;
+    margin: 5px;
+    border: 5px solid black;
+    border-radius: 12px;
+    transition: all .5s ease;
+}
+.detailed_expenses:hover {
+    background-color:#C40EB1;
+    border: 5px solid rgb(14, 196, 32);
+    box-shadow: 5px 10px;
+}
+
+.yearly_insight{
+    padding: 10px;
+    margin: 5px;
+    border: 5px solid black;
+    border-radius: 12px;
+    transition: all .5s ease;
+}
+.yearly_insight:hover {
+    background-color: #C40EB1;
+    border: 5px solid rgb(14, 196, 32);
+    box-shadow: 5px 10px;
 }

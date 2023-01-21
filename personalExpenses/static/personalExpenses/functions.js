@@ -30,13 +30,12 @@ function display_chart1() {
 function display_chart2() {
     var xValues = ["Home Rent", "Food Expenses", "Travel Expenses"];
     var yValues = [document.getElementById("home_rent").value, document.getElementById("food_expenses").value,
-    document.getElementById("travel_expenses").value];
+                document.getElementById("travel_expenses").value];
     var barColors = [
         "#b91d47",
         "#00aba9",
         "#2b5797",
-        "#e8c3b9",
-        "#1e7145"
+        
     ];
 
     new Chart("myChart2", {
@@ -106,19 +105,22 @@ function display_chart3() {
         data: {
             labels: x,
             datasets: [{
-                labels : 'Income',
+                labels: 'Income',
                 backgroundColor: linecolors,
                 data: yIncome,
+                color: "#f18f01"
                 
             }, {
                 labels: 'Expenses',
                 backgroundColor: linecolors,
                 data: yExpenses,
+                color: "#048ba8"
         
             }, {
                 labels: 'Savings',
                 backgroundColor: linecolors,
                 data: ySavings,
+                color: "#edeeff"
                 
             }]
         },
@@ -126,9 +128,31 @@ function display_chart3() {
             title: {
                 display: true,
 
+            },
+            animations: {
+                tension: {
+                    duration: 1000,
+                    easing: 'linear',
+                    from: 1,
+                    to: 0,
+                    loop: true
+                },
+                scales: {
+                    y: { // defining min and max so hiding the dataset does not change scale range
+                        min: 0,
+                        max: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: {
+                            color: 'rgb(255, 99, 132)'
+                        }
+                    }
+                }
+
             }
         }
     });
-    
-    
-}
+};

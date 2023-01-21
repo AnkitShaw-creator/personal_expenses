@@ -61,7 +61,7 @@ def dashboard(request):
     finaldata = json.dumps(finaldata)
     print(finaldata)
     if request.method == 'GET':
-        return render(request, 'personalExpenses/dashboard.html',{"form": ExpenseForm(), "yearData":finaldata})
+        return render(request, 'personalExpenses/dashboard.html',{"form": ExpenseForm(), "yearData":finaldata, "user":request.user})
     
     else:
         print("retrieve from dashboard")
@@ -78,12 +78,12 @@ def dashboard(request):
                     newExpense.save()
                     print("data saved")
                 else:
-                    return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "error": f.errors})
+                    return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "error": f.errors, "user":request.user})
             except ValueError:
-                return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "error":'Data is invalid'})
+                return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "error":'Data is invalid', "user":request.user})
 
             print("sending back the data to dashboard")
-            return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":finaldata})
+            return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":finaldata, "user":request.user})
         
         else:
-             return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":finaldata, "error":"Month data already exists, please change the value",})
+             return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":finaldata, "error":"Month data already exists, please change the value", "user":request.user})
