@@ -1,19 +1,15 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Expenses</title>
+    <title>Home</title>
 </head>
 <body>
-    <p>
-        <h3>Get the insight on your mothly expenses.</h3>
-        <h5>
-            Login/Signup to get a visual insight on your expenses. 
-        </h5>
-    </p>
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'signUp' %}">Sign-up</a>
+    Signup or Signin to view expenses
+    <form action="{% url 'index' %}" method="get">
+        {% csrf_token %}
+        <button type="submit" >SIgnUp/Login</button>
+    </form>
 </body>
 </html>

@@ -1,3 +1,12 @@
+function display_chart() {
+    display_chart1();
+    display_chart2();
+    display_chart3();
+}
+
+
+
+
 function display_chart1() {
     //var canvas = "myChart1";
     var xValues = ["Monthly Expenses", "Monthly Savings"];
@@ -66,6 +75,7 @@ function display_chart3() {
     var yIncome = [];
     var yValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     var list = JSON.parse(document.getElementById('year_data').value);
+    console.log(list)
     for (let i = 0; i < list.length; i++) {
         const element = list[i];
         //console.log(element);

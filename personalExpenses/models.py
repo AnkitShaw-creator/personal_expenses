@@ -19,7 +19,19 @@ class userExpense(models.Model):
     monthly_expenses = models.IntegerField(default=0)
     monthly_earning = models.IntegerField(default=0)
     monthly_savings = models.IntegerField(default=0)
+    monthly_home_rent = models.IntegerField(default=0)
+    monthly_food_expenses = models.IntegerField(default=0)
+    monthly_travel_expenses = models.IntegerField(default=0)
+    monthly_child_care = models.IntegerField(default=0)
+    monthly_pet_care = models.IntegerField(default=0)
+    monthly_cellphone = models.IntegerField(default=0)
+    monthly_internet = models.IntegerField(default=0)
+    monthly_health_care = models.IntegerField(default=0)
+    monthly_entertainment = models.IntegerField(default=0)
+    monthly_loan = models.IntegerField(default=0)
+    monthly_retirement = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
     def __str__(self):
         return self.month
 

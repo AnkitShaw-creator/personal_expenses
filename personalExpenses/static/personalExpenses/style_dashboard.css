@@ -95,7 +95,6 @@ label #cross {
 .content{
     transition: all .5s ease;
     padding:25px;
-    background-color: rgb(228, 248, 195);
     
 }
 .content header{
@@ -111,7 +110,6 @@ label #cross {
     padding: 10px;
     transition: all .5s ease;
     border-radius: 12px;
-    
 }
 .content button:hover{
     background-color: rgb(4, 169, 48);
@@ -127,12 +125,19 @@ label #cross {
     transition: all .5s ease;
 }
 .earnings:hover{
-    background-color: #C40EB1;
+    /* background-color: #87596f; */
     border: 5px solid rgb(14, 196, 32);
     box-shadow: 5px 10px;
 }
 
-.detailed_expenses{
+.new_expenses{
+    padding: 10px;
+    margin: 5px;
+    border: 5px solid black;
+    border-radius: 12px;
+    transition: all .5s ease;
+}
+.detailed_expenses {
     padding: 10px;
     margin: 5px;
     border: 5px solid black;
@@ -140,7 +145,7 @@ label #cross {
     transition: all .5s ease;
 }
 .detailed_expenses:hover {
-    background-color:#C40EB1;
+    /*background-color:#baa8b1;*/
     border: 5px solid rgb(14, 196, 32);
     box-shadow: 5px 10px;
 }
@@ -153,7 +158,7 @@ label #cross {
     transition: all .5s ease;
 }
 .yearly_insight:hover {
-    background-color: #C40EB1;
+    /* background-color: #C40EB1; */
     border: 5px solid rgb(14, 196, 32);
     box-shadow: 5px 10px;
 }

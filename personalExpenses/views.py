@@ -8,7 +8,7 @@ from personalExpenses import password
 from .models import userExpense
 from .forms import ExpenseForm
 
-class landing(View):
+class index(View):
     
     def get(self, request):
         return render(request,'personalExpenses/index.html')
@@ -45,12 +45,13 @@ class landing(View):
                 return render(request,'personalExpenses/index.html',{'error':'The password entered do not match!'})
             
         
-def logOut(request):
+def logOutUser(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('index')
+        return redirect('home')
 
-
+def home(request):
+    return render(request, 'personalExpenses/home.html')
 
 def dashboard(request):
     yearData = list(userExpense.objects.filter(user = request.user))
@@ -63,7 +64,7 @@ def dashboard(request):
     if request.method == 'GET':
         return render(request, 'personalExpenses/dashboard.html',{"form": ExpenseForm(), "yearData":finaldata, "user":request.user})
     
-    else:
+"""     else:
         print("retrieve from dashboard")
         monthdata = [request.POST['month'], request.POST['monthly_earning'], request.POST['monthly_expenses'], request.POST['monthly_savings']]
 
@@ -83,7 +84,45 @@ def dashboard(request):
                 return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "error":'Data is invalid', "user":request.user})
 
             print("sending back the data to dashboard")
-            return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":finaldata, "user":request.user})
+            return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":"finaldata", "user":request.user})
         
         else:
-             return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":finaldata, "error":"Month data already exists, please change the value", "user":request.user})
+             return render(request, 'personalExpenses/dashboard.html', {"data": monthdata, "yearData":"finaldata", "error":"Month data already exists, please change the value", "user":request.user})
+ """
+
+def new_expenses(request):
+    yearData = list(userExpense.objects.filter(user = request.user))
+    if request.method == 'GET':
+        return render(request, 'personalExpenses/new_expenses.html')
+    
+    if request.method == 'POST':
+        if 'addData' in request.POST:
+            print("retrieve from dashboard")
+            monthdata = [request.POST['month'], request.POST['monthly_earning'], request.POST['monthly_expenses'], request.POST['monthly_savings'],
+                         request.POST['monthly_home_rent'], request.POST['monthly_food_expenses'], request.POST['monthly_travel_expenses'], request.POST['monthly_child_care'],
+                         request.POST['monthly_pet_care'], request.POST['monthly_cellphone'], request.POST['monthly_internet'], request.POST['monthly_health_care'],
+                         request.POST['monthly_entertainment'], request.POST['monthly_loan'], request.POST['monthly_retirement']]
+
+            if request.POST['month'] not in yearData:
+                
+                try:
+                    f = ExpenseForm(request.POST)
+                    print("saving the data")
+                    if f.is_valid():
+                        newExpense = f.save(commit=False)
+                        newExpense.user = request.user
+                        newExpense.save()
+                        print("data saved")
+                    else:
+                        return render(request, 'personalExpenses/new_expenses.html', {"data": monthdata, "error": f.errors, "user":request.user})
+                except ValueError:
+                    return render(request, 'personalExpenses/new_expenses.html', {"data": monthdata, "error":'Data is invalid', "user":request.user})
+
+                print("sending back the data to dashboard")
+                return render(request, 'personalExpenses/new_expenses.html', {"data": monthdata, "yearData":"finaldata", "user":request.user})
+            
+            else:
+                return render(request, 'personalExpenses/new_expenses.html', {"data": monthdata, "yearData":"finaldata", "error":"Month data already exists, please change the value", "user":request.user})
+        else:
+            return render(request, 'personalExpenses/new_expenses.html')
+

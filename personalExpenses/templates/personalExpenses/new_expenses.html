@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'personalExpenses/functions.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'personalExpenses/style_dashboard.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&family=Source+Code+Pro:wght@500&display=swap"
+        rel="stylesheet">
+    <title>Detailed Expense</title>
+</head>
+<body>
+    <div class="body">
+        <input type="checkbox" name="" id="check">
+        <label for="check">
+            <i class="material-icons" id="btn">menu</i>
+            <i class="material-icons" id="cross">cancel</i>
+        </label>
+        <div class="sidenav">
+            <header>Hi there!</header>
+            <ul>
+                <li>
+                    <form action="{% url 'dashboard' %}">
+                        {% csrf_token %}
+                        <button type="submit" name="dashboardButton">Dashboard</button>
+                    </form>
+                </li>
+                <li>
+                    <form action="{% url 'logOutUser' %}">
+                        {% csrf_token %}
+                        <button type="submit" name="logOutButton">Logout</button>
+                    </form>
+                </li>
+                
+            </ul>
+        </div>
+    
+        <div class="content">
+            <header>Hi there! {{ user }}</header><br>
+            {{error}} <br><br>
+    
+    
+            <div class="new_expenses">
+                <!-- for new monthly exepnses-->
+                <h3>New Expenses</h3> <br>
+    
+                <form action="" method="post">
+
+                    {% csrf_token %}
+                    <h3>Please fill the form and save to get expenses</h3>
+
+                    <label for="month">Data for Month:</label>
+                    <select name="month" id="month">
+                        <option value="JAN" >January</option>
+                        <option value="FEB" >February</option>
+                        <option value="MAR" >March</option>
+                        <option value="APR" >April</option>
+                        <option value="MAY" >May</option>
+                        <option value="JUN" >June</option>
+                        <option value="JUL" >July</option>
+                        <option value="AUG" >August</option>
+                        <option value="SEP" >September</option>
+                        <option value="OCT" >October</option>
+                        <option value="NOV" >November</option>
+                        <option value="DEC" >December</option>
+                    </select> <br>
+                    
+                    <label for="monthly_earning">Enter the Monthly Earnings</label>
+                    <input type="number" name="monthly_earning" id="monthly_earning"><br>
+                    
+                    <label for="monthly_expenses">Enter the Monthly Expenses</label>
+                    <input type="number" name="monthly_expenses" id="monthly_expenses" ><br>
+                    
+                    <label for="monthly_savings">Enter the Monthly Savings</label>
+                    <input type="number" name="monthly_savings" id="monthly_savings" ><br>
+
+                    <label for="monthly_home_rent">Enter the Home Rent</label>
+                    <input type="number" name="monthly_home_rent" id="monthly_home_rent"><br>
+                    
+                    <label for="monthly_food_expenses">Enter the Food Expenses</label>
+                    <input type="number" name="monthly_food_expenses" id="monthly_food_expenses"><br>
+                    
+                    <label for="monthly_travel_expenses">Enter the Travel Expenses</label>
+                    <input type="number" name="monthly_travel_expenses" id="monthly_travel_expenses"><br>
+
+                    <label for="monthly_child_care">Enter the Child Care</label>
+                    <input type="number" name="monthly_child_care" id="monthly_child_care"><br>
+                    
+                    <label for="monthly_pet_care">Enter the Pet Care</label>
+                    <input type="number" name="monthly_pet_care" id="monthly_pet_care"><br>
+                    
+                    <label for="monthly_cellphone">Enter the Cellphone</label>
+                    <input type="number" name="monthly_cellphone" id="monthly_cellphone"><br>
+
+                    <label for="monthly_internet">Enter the Internet bill</label>
+                    <input type="number" name="monthly_internet" id="monthly_internet"><br>
+
+                    <label for="monthly_health_care">Enter the Health Care charges</label>
+                    <input type="number" name="monthly_health_care" id="monthly_health_care"><br>
+                    
+                    <label for="monthly_entertainment">Enter the amount spent on Entertainment</label>
+                    <input type="number" name="monthly_entertainment" id="monthly_entertainment"><br>
+                    
+                    <label for="monthly_loan">Enter the Loan/EMI paid</label>
+                    <input type="number" name="monthly_loan" id="monthly_loan"><br>
+
+                    <label for="monthly_retirement">Enter the amount saved under Retirement plan</label>
+                    <input type="number" name="monthly_retirement" id="monthly_retirement"><br>
+
+                    <button type="submit" name="addData">Save data</button>
+                </form>
+    
+            </div> <br><br>
+        </div>
+    </div>
+
+</body>
+</html>

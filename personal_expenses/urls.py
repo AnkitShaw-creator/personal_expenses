@@ -19,10 +19,11 @@ from personalExpenses import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.landing.as_view(), name='landing'),
-    # path('login/', views.loginUser, name='login'),
-    # path('signUp/', views.signUpUser, name='signUp'),
+    path('index', views.index.as_view(), name='index'),
+    path('', views.home, name='home'),
+    path('logOutUser', views.logOutUser, name='logOutUser'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('new_expenses/',  views.new_expenses, name="new_expenses"),
     
 ]
              
